@@ -3,6 +3,12 @@
 #include <stdlib.h>
 #define SIFRE 48
 
+#ifdef _WIN32
+#define EKRANI_TEMIZLE "cls"
+#else
+#define EKRANI_TEMIZLE "clear"
+#endif
+
 char musteriAd[20][30];
 char musteri_Telefon[20][12];
 int toplam_Randevu = 0;
@@ -24,7 +30,7 @@ int main()
 	{
 		Menu_Ana();
 		scanf("%d",&secim);
-		system("cls"); //geçmiþ temizlemek
+		system(EKRANI_TEMIZLE); //geÃ§miÅŸ temizlemek
 		while(getchar() != '\n');
 		if(secim == 1)
 		{
@@ -90,7 +96,7 @@ void Dosya_Oku()
 	{
 	musteriAd[toplam_Randevu][strcspn(musteriAd[toplam_Randevu], "\n")] = 0;
 	fscanf(dosya, "%s", musteri_Telefon[toplam_Randevu]);
-	fgetc(dosya); //alt satýra geçmesi için(enteri okuma)
+	fgetc(dosya); //alt satÄ±ra geÃ§mesi iÃ§in(enteri okuma)
 	toplam_Randevu++;
 	}
 	fclose(dosya);
@@ -131,7 +137,7 @@ void Sira_Sorgula()
 	getchar();
 	for(i=0; i<toplam_Randevu; i++)
 	{
-		if(strcmp(musteri_Telefon[i], kayitli_Telefon)==0) //0 sa metinler aynýsý birbirinin (aradaki fark 0)
+		if(strcmp(musteri_Telefon[i], kayitli_Telefon)==0) //0 sa metinler aynÄ±sÄ± birbirinin (aradaki fark 0)
 		{
 			printf("Sira bulundu!\nisim soyisim:%s\nSira No:%d\n",musteriAd[i], i+1);
 			bulundu=1;
@@ -146,7 +152,7 @@ void Sira_Sorgula()
 				strcpy(musteriAd[j],musteriAd[j+1]);
 				strcpy(musteri_Telefon[j],musteri_Telefon[j+1]);
 				}
-			toplam_Randevu--; //en sondaki kiþi
+			toplam_Randevu--; //en sondaki kiÅŸi
 			printf("Randevunuz basari ile iptal edilmistir...\n");
 			Dosya_Yaz();
 			}
