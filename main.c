@@ -30,7 +30,7 @@ int main()
 	{
 		Menu_Ana();
 		scanf("%d",&secim);
-		system(EKRANI_TEMIZLE); //geçmiş temizlemek
+		system(EKRANI_TEMIZLE);
 		while(getchar() != '\n');
 		if(secim == 1)
 		{
@@ -96,7 +96,7 @@ void Dosya_Oku()
 	{
 	musteriAd[toplam_Randevu][strcspn(musteriAd[toplam_Randevu], "\n")] = 0;
 	fscanf(dosya, "%s", musteri_Telefon[toplam_Randevu]);
-	fgetc(dosya); //alt satıra geçmesi için(enteri okuma)
+	fgetc(dosya);
 	toplam_Randevu++;
 	}
 	fclose(dosya);
@@ -137,7 +137,7 @@ void Sira_Sorgula()
 	getchar();
 	for(i=0; i<toplam_Randevu; i++)
 	{
-		if(strcmp(musteri_Telefon[i], kayitli_Telefon)==0) //0 sa metinler aynısı birbirinin (aradaki fark 0)
+		if(strcmp(musteri_Telefon[i], kayitli_Telefon)==0)
 		{
 			printf("Sira bulundu!\nisim soyisim:%s\nSira No:%d\n",musteriAd[i], i+1);
 			bulundu=1;
@@ -152,7 +152,7 @@ void Sira_Sorgula()
 				strcpy(musteriAd[j],musteriAd[j+1]);
 				strcpy(musteri_Telefon[j],musteri_Telefon[j+1]);
 				}
-			toplam_Randevu--; //en sondaki kişi
+			toplam_Randevu--;
 			printf("Randevunuz basari ile iptal edilmistir...\n");
 			Dosya_Yaz();
 			}
