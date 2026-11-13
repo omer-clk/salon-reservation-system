@@ -53,3 +53,13 @@ dkms.conf
 
 # debug information files
 *.dwo
+
+# Dev-C++ project files
+*.dev
+Makefile.win
+
+# Runtime data
+kayitlarim.txt
+
+# Binaries
+kuafor
